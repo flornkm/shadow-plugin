@@ -12,8 +12,8 @@
  * falls short: Tailwind cannot see inside the var to reach the individual
  * layers, so `shadow-md/40` and `shadow-{color}` silently do nothing.
  *
- * `smooth-shadow-ring-*` has no native equivalent, so the ring utilities keep
- * their names and are included here.
+ * `smooth-shadow-ring-*` and `smooth-shadow-elevation-*` have no native
+ * equivalents, so those utilities keep their names and are included here.
  *
  * @author Florian Kiem <https://github.com/flornkm>
  * @license MIT
