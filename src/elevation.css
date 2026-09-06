@@ -1,0 +1,60 @@
+/**
+ * Optional elevation-flavored shadow scale.
+ *
+ * Unlike smooth-shadow-* (which expresses softness), these levels express
+ * distance from the surface: a crisp contact layer stays near the edge while
+ * the independent ambient layer moves farther out and becomes lighter.
+ * Override a complete level with `--smooth-shadow-elevation-{n}` at any scope.
+ *
+ * @author Florian Kiem <https://github.com/flornkm>
+ * @license MIT
+ */
+
+@utility smooth-shadow-elevation-0 {
+  box-shadow: var(--smooth-shadow-elevation-0, none);
+}
+
+@utility smooth-shadow-elevation-1 {
+  --smooth-shadow-color: var(--tw-shadow-color, black);
+  box-shadow: var(
+    --smooth-shadow-elevation-1,
+    0 1px 2px 0 color-mix(in srgb, var(--smooth-shadow-color) 7%, transparent),
+    0 1px 8px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent)
+  );
+}
+
+@utility smooth-shadow-elevation-2 {
+  --smooth-shadow-color: var(--tw-shadow-color, black);
+  box-shadow: var(
+    --smooth-shadow-elevation-2,
+    0 1px 2px 0 color-mix(in srgb, var(--smooth-shadow-color) 6%, transparent),
+    0 4px 12px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent)
+  );
+}
+
+@utility smooth-shadow-elevation-3 {
+  --smooth-shadow-color: var(--tw-shadow-color, black);
+  box-shadow: var(
+    --smooth-shadow-elevation-3,
+    0 1px 2px 0 color-mix(in srgb, var(--smooth-shadow-color) 5%, transparent),
+    0 9px 18px 0 color-mix(in srgb, var(--smooth-shadow-color) 3.5%, transparent)
+  );
+}
+
+@utility smooth-shadow-elevation-4 {
+  --smooth-shadow-color: var(--tw-shadow-color, black);
+  box-shadow: var(
+    --smooth-shadow-elevation-4,
+    0 1px 2px 0 color-mix(in srgb, var(--smooth-shadow-color) 4%, transparent),
+    0 18px 28px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent)
+  );
+}
+
+@utility smooth-shadow-elevation-5 {
+  --smooth-shadow-color: var(--tw-shadow-color, black);
+  box-shadow: var(
+    --smooth-shadow-elevation-5,
+    0 1px 2px 0 color-mix(in srgb, var(--smooth-shadow-color) 3%, transparent),
+    0 32px 40px 0 color-mix(in srgb, var(--smooth-shadow-color) 2.5%, transparent)
+  );
+}

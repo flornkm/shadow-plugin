@@ -3,7 +3,7 @@ name: smooth-shadow-ring
 description: Use when styling any elevated surface (card, dialog, popover, dropdown, menu, tooltip, sheet, toast) in a Tailwind project that has shadow-plugin installed. Prevents the double-border artifact caused by pairing a border/ring with a shadow, by routing elevation through the smooth-shadow-ring-* utilities.
 ---
 
-# Elevated surfaces: use smooth-shadow-ring, never border + shadow
+# Elevated surfaces: choose ring softness or distance elevation
 
 ## When this applies
 
@@ -20,9 +20,10 @@ soft one. It looks heavy, greyed, and cheap.
 ## The rule
 
 If you are about to write a `border-*` or `ring-*` class next to any `shadow-*`
-on an elevated surface, use `smooth-shadow-ring-{size}` instead. It bakes a 1px
-hairline ring into the final shadow layer, so the edge dissolves into the shadow
-as one continuous stroke.
+on an elevated surface, first choose the intended semantics. For softness and
+emphasis, use `smooth-shadow-ring-{size}`; it bakes a 1px hairline ring into the
+final shadow layer. For actual distance hierarchy, remove the border/ring and
+use `smooth-shadow-elevation-{0..5}`.
 
 - `border shadow-md` → `smooth-shadow-ring-md`
 - `ring-1 ring-neutral-200 shadow-lg` → `smooth-shadow-ring-lg`
@@ -31,6 +32,8 @@ as one continuous stroke.
   `smooth-shadow-ring-*`. The ring is already in there; a second edge doubles up.
 - If the surface should have no edge stroke at all, use plain
   `smooth-shadow-{size}` (no ring), not a border.
+- If the surface's level must read as physical distance, use
+  `smooth-shadow-elevation-{0..5}` without a separate border or ring.
 
 ## Coloring
 
@@ -73,6 +76,19 @@ important modifier on that element instead of a global override:
 ```html
 <div class="smooth-shadow-ring-md!">…</div>
 ```
+
+For distance semantics, use `smooth-shadow-elevation-0` through
+`smooth-shadow-elevation-5`. They keep a crisp contact shadow while moving the
+ambient layer farther out and reducing both layers' alpha. Keep the default
+`smooth-shadow-*` scale for softness/emphasis semantics.
+
+```html
+<div class="smooth-shadow-elevation-3 shadow-blue-500/50">…</div>
+```
+
+Override a complete level with `--smooth-shadow-elevation-{n}` at the project,
+component, or element scope. Custom recipes own their colors; Tailwind
+`shadow-{color}` continues to tint the built-in recipes.
 
 ## Example
 

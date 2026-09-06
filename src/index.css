@@ -3,6 +3,7 @@
  *
  * - shadows.css     — stacked `smooth-shadow-*` shadows (ringless)
  * - shadow-ring.css — `smooth-shadow-ring-*` (stacked shadow + 1px hairline ring)
+ * - elevation.css   — `smooth-shadow-elevation-{0..5}` distance scale
  *
  * @author Florian Kiem <https://github.com/flornkm>
  * @license MIT
@@ -10,3 +11,4 @@
 
 @import "./shadows.css";
 @import "./shadow-ring.css";
+@import "./elevation.css";
