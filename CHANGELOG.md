@@ -1,3 +1,9 @@
+## [2.1.1](https://github.com/flornkm/shadow-plugin/compare/v2.1.0...v2.1.1) (2026-09-18)
+
+### Bug Fixes
+
+* **demo:** centre the playground row labels on their controls ([#8](https://github.com/flornkm/shadow-plugin/issues/8)) ([a935101](https://github.com/flornkm/shadow-plugin/commit/a9351014b8ef3387c7669880feaea90bc518d515))
+
 ## [2.1.0](https://github.com/flornkm/shadow-plugin/compare/v2.0.0...v2.1.0) (2026-08-04)
 
 ### Features
