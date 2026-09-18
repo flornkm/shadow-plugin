@@ -221,6 +221,8 @@ function Field({
       >
         {label}
       </span>
+      {/* Controls go in block-level: an inline-level one adds a line box here and
+          the descender space under it throws the label off centre. */}
       <div className="min-w-0 sm:flex-1">{children}</div>
     </div>
   );
@@ -342,7 +344,13 @@ function Switch({
       aria-checked={checked}
       aria-label={label}
       onClick={() => onCheckedChange(!checked)}
-      className="inline-flex cursor-pointer items-center"
+      /* `flex w-fit`, not `inline-flex`: an inline-level control sits on a line
+         box in the row's block wrapper, which then reserves the font's descender
+         space under it. That made the wrapper 26px tall around a 20px switch, so
+         the row's `items-center` centred the label against six pixels of empty
+         space and left it sitting low. Block-level, the wrapper is exactly the
+         switch's height; `w-fit` keeps the hit area on the switch itself. */
+      className="flex w-fit cursor-pointer items-center"
     >
       <span
         className={cn(
