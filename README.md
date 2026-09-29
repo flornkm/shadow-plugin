@@ -32,9 +32,36 @@ The plugin supports Tailwind's shadow color utilities:
 <div class="smooth-shadow-md shadow-blue-500/50" />
 ```
 
+### Elevation shadows
+
+The default `smooth-shadow-*` scale is tuned for softness and emphasis. For
+actual distance semantics, use the optional `smooth-shadow-elevation-{0..5}`
+scale: every level keeps a crisp contact shadow while its ambient layer moves
+farther away and becomes lighter.
+
+```html
+<div class="smooth-shadow-elevation-3 shadow-blue-500/50" />
+```
+
+`smooth-shadow-elevation-0` removes the shadow. Override any complete level
+with its matching semantic token. Define it on `:root` for a project-wide
+scale, on a component scope, or on one element:
+
+```css
+.product-shell {
+  --smooth-shadow-elevation-3: 0 2px 3px rgb(0 0 0 / 6%),
+    0 14px 30px rgb(0 0 0 / 3%);
+}
+```
+
+This replaces the complete level rather than exposing each internal layer as a
+separate API. Custom recipes own their colors; `shadow-{color}` continues to
+tint the built-in recipes. The `unprefixed` entrypoint retains the explicit
+elevation class names.
+
 ### Shadow + ring
 
-For elevated surfaces (dialogs, popovers, cards, menus), use `smooth-shadow-ring-{size}`, the same stacked shadow with a 1px hairline ring baked in as the final layer, so the edge morphs into the shadow instead of sitting next to it as a separate `border`. Don't add a `border`/`ring` on top; the ring is already in there.
+For surfaces that need a soft shadow plus a hairline edge, use `smooth-shadow-ring-{size}`, the same stacked shadow with a 1px hairline ring baked in as the final layer, so the edge morphs into the shadow instead of sitting next to it as a separate `border`. Don't add a `border`/`ring` on top; the ring is already in there. Use the elevation scale above when the level must communicate distance instead.
 
 ```html
 <div class="smooth-shadow-ring-md" />
@@ -124,6 +151,7 @@ Because it writes literal values into Tailwind's `--shadow-*` theme tokens, the 
 | `smooth-shadow-2xl`                                | 2x large                                                               |
 | `smooth-shadow-none`                               | None                                                                   |
 | `smooth-shadow-ring-xs` … `smooth-shadow-ring-2xl` | Shadow + 1px hairline ring (`smooth-shadow-ring` = medium)             |
+| `smooth-shadow-elevation-0` … `-5`                 | Optional distance/elevation scale                                      |
 | `smooth-ring-{color}`                              | Ring color override, supports opacity (e.g. `smooth-ring-blue-500/40`) |
 
 The ring reads two custom properties you can set at any scope: `--smooth-ring-color` and `--smooth-ring-width`.
